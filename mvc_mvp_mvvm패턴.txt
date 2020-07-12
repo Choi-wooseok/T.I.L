@@ -1,0 +1,66 @@
+mvc패턴, mvp패턴, mvvm패턴
+
+			1. MVC패턴 - Model + View + Controller
+ - Model : 어플리케이션에서 사용되는 데이터와 그 데이터를 처리하는 부분
+ - View : 사용자에게 보여지는 UI
+ - Controller : 사용자의 입력을 받고 처리
+
+ 1) 특징
+Controller는 여러 View를 선택 가능 / View를 선택할 뿐 직접 업데이트X
+
+ 2) 동작
+사용자 요청 -> Controller
+ -> Controller가 사용자 요청 확인 후 Model Update
+ -> Controller가 Model나타내줄 View 선택
+ -> View가 Model이용해 화면 출력
+
+ 3) 단점
+ View와 Model 간 의존성이 높아 유지보수 어려움
+
+			2. MVP패턴 - Model + View + Presenter
+ - Model : 어플리케이션에서 사용되는 데이터와 그 데이터를 처리하는 부분
+ - View : 사용자에게 보여지는 UI
+ - Controller : View에서 요청한 정보로 Model 가공해 View에 전달 / View - Model 이어줌
+
+ 1) 특징
+Presenter는 View와 Model의 인스턴스를 가지고 있어 둘을 연결 / Presenter와 View는 1:1 관계
+
+ 2) 동작
+사용자 요청 -> View
+ -> View가 사용자 요청 확인 후 Model Update
+ -> Controller가 Presenter에 데이터 요청
+ -> Presenter가 Model에 데이터 요청
+ -> Model이 Presenter에 데이터 응답
+ -> Presenter가 View에 데이터 응답
+ -> View가 데이터 이용해 화면 출력
+
+ 3) 단점
+ View와 Presenter 간 의존성이 높음
+
+			3. MVVM패턴 - Model + View + View Model
+ - Model : 어플리케이션에서 사용되는 데이터와 그 데이터를 처리하는 부분
+ - View : 사용자에게 보여지는 UI
+ - View Model : View를 나타내 주기 위한 Model이자 View를 나타내기 위해 데이터 처리를 하는 부분.
+
+ 1) 특징
+Command 패턴과 Data Binding 두 가지 패턴을 사용하여 구현되고 이를 이용하여 View와 View Model 사이의 의존성을 없앰
+ * Command 패턴 - 객체의 행위( 메서드 )를 클래스로 만들어 캡슐화 하는 패턴 / 의존성 제거 가능
+ * Data Binding - Model과 UI 요소 간의 싱크를 맞춰주는 것 / 이 패턴을 통해 View와 로직이 분리되어 있어도 한 쪽이 바뀌면 다른 쪽도 업데이트가 이루어져 데이터의 일관성을 유지함
+View Model과 View는 1:n 관계
+ViewModel은 View를 전혀 모른다. View만 ViewModel을 인스턴스로 갖고 있고 데이터 바인딩을 통해 ViewModel의 데이터를 View에 표시한다. 때문에 굳이 ‘1 대 1’ 관계로 묶여 있지 않고 그렇기 때문에 중복 로직을 줄일 수 있고 결합도를 낮출 수 있다.
+
+ 2) 동작
+사용자 요청 -> View
+ -> View가 사용자 요청 확인 후 Model Update
+ -> Controller가 Presenter에 데이터 요청
+ -> Presenter가 Model에 데이터 요청
+ -> Model이 Presenter에 데이터 응답
+ -> Presenter가 View에 데이터 응답
+ -> View가 데이터 이용해 화면 출력
+
+ 3) 단점
+MVVM 패턴의 단점은 View Model의 설계가 쉽지 않음 
+
+
+
+
